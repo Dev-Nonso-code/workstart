@@ -8,15 +8,15 @@
 
 </head>
 <body>
-  <form class="text-center">
+  <form (ngSubmit)="login" class="text-center">
     <div class="mb-3 mt-4">
       
-      <input type="email" class="form-control w-50 m-auto" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp">
+      <input type="email" class="form-control w-50 m-auto" id="email" placeholder="Email" aria-describedby="emailHelp" [(ngModel)]="userEmail" name="email" required>
       <div id="emailHelp" class="form-text text-center m-auto">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
       
-      <input type="password" class="form-control w-50 m-auto" id="exampleInputPassword1" placeholder="password">
+      <input type="password" class="form-control w-50 m-auto" id="password" placeholder="password" [(ngModel)]="userPassword" name="password" required>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input m-auto" id="exampleCheck1">
