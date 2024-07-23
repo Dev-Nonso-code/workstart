@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+interface User {
+  email: string;
+  password: string;
+  // any other user properties
+};
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -11,18 +16,18 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-// login: any;
-userEmail = '';
-userPassword = '';
+
+  userEmail = '';
+  userPassword = '';
 userInfo = JSON.parse(localStorage.getItem('userInfo') || '[]');
 constructor(private router: Router) {} 
 
 login() {
-  const user = this.userInfo.find(
-    (u: any) => u.email === this.userEmail && u.password === this.userPassword
+  const User = this.userInfo.find(
+    (u: User) => u.email === this.userEmail && u.password === this.userPassword
   );
 
-  if (user) {
+  if (User) {
     // Assuming you have some sort of service to keep track of the user's state
     // loggedInService.logIn(user);
     console.log('Successfully logged in!');
