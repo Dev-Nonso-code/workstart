@@ -1,0 +1,108 @@
+<div
+  class="container mt-5 m-auto bg-success border border-2 border-warning py-3 h-100"
+>
+  <h1 class="text-center text-primary">CHECK YOUR LOVE %</h1>
+  <form #signupForm="ngForm">
+    <div class="mb-3 w-50 text-center m-auto">
+      <label for="username" class="form-label">Your Name</label>
+      <input
+        [(ngModel)]="newUser.yourname"
+        type="text"
+        class="form-control m-auto"
+        id="yourname"
+        name="yourname"
+        ngModel
+        required
+      />
+    </div>
+    <div class="mb-3 w-50 text-center m-auto">
+      <label for="hername" class="form-label">Your Lover Name</label>
+      <input
+        [(ngModel)]="newUser.hername"
+        type="text"
+        class="form-control m-auto"
+        id="hername"
+        name="hername"
+        ngModel
+        required
+      />
+    </div>
+
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!signupForm.valid"
+        (click)="addusers()"
+      >
+        CHECK
+      </button>
+    </div>
+  </form>
+</div>
+<form #signupForm="ngForm" *ngIf="displayForm">
+  <div class="mb-3 w-50 text-center">
+    <label for="username" class="form-label">Username</label>
+    <input
+      [(ngModel)]="newUserEdit.yourname"
+      type="text"
+      class="form-control"
+      id="yourname"
+      name="yourname"
+      ngModel
+      required
+    />
+  </div>
+  <div class="mb-3 w-50 text-center">
+    <label for="hername" class="form-label">Your Lover Name</label>
+    <input
+      [(ngModel)]="newUserEdit.hername"
+      type="text"
+      class="form-control"
+      id="hername"
+      name="hername"
+      ngModel
+      required
+    />
+  </div>
+  <div class="text-center">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!signupForm.valid"
+      (click)="editUserInfo()"
+    >
+      Edit User
+    </button>
+  </div>
+</form>
+<main>
+  <h2>User Info</h2>
+  <table class="border border-2 border-info w-100 text-center">
+    <tr class="p-3 border border-2 border-info">
+      <th>#</th>
+      <th>Yourname</th>
+      <th>Hername</th>
+      <th>Grade</th>
+      <th>Action</th>
+    </tr>
+    <!-- <div *ngIf="userInfo = null"> -->
+    <tbody *ngFor="let user of loverInfo; let i = index">
+      <tr class="p-3 border border-2 border-info">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.yourname }}</td>
+        <td>{{ user.hername }}</td>
+
+        <td>
+          <button (click)="editUser(i)" class="btn btn-sm btn-primary">
+            Edit
+          </button>
+          <button (click)="delUser(i)" class="btn btn-sm btn-danger">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <!-- </div> -->
+  </table>
+</main>
