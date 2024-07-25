@@ -8,50 +8,53 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './todo.component.html',
-  styleUrl: './todo.component.scss'
+  styleUrl: './todo.component.scss',
 })
 export class TodoComponent {
-
-  [x: string]: any;
+  // [x: string]: any;
   public todo: string = 'sleep now now';
   public newTodo: string = '';
   public displayForm: boolean = false;
   public ind: number = 0;
+  // public randomValue: number = Math.random();
+  public min = 0;
+  public max = 100;
+  public randomValue = Math.floor(Math.random()*33) * (this.max - this.min) +this. min;
+  public randomInt = Math.floor(this.randomValue);
+
   public loverInfo: Array<{
     yourname: string;
     hername: string;
-    
+    randomValue: string;
   }> = JSON.parse(localStorage.getItem('loverInfo')!) || [];
   // public grade: math.random((***)) ;
   public newUser = {
     yourname: '',
     hername: '',
-    
+    randomValue: '',
   };
   public newUserEdit = {
     yourname: '',
     hername: '',
+    randomValue: '',
   };
   writeTodo() {
     console.log(this.loverInfo);
   }
   addusers() {
-    if (
-      this.newUser.yourname &&
-      this.newUser.hername
-    ) {
+    if (this.newUser.yourname && this.newUser.hername) {
       this.loverInfo.push(this.newUser);
       localStorage.setItem('loverInfo', JSON.stringify(this.loverInfo));
       this.newUser = {
         yourname: '',
         hername: '',
-        
+        randomValue: '',
       };
     }
     this.displayForm = false;
     console.log(this.loverInfo);
-  
-      this.router.navigate(['/todo'])
+
+    this.router.navigate(['/todo']);
   }
 
   editUser(i: number) {
@@ -71,6 +74,7 @@ export class TodoComponent {
     this.newUserEdit = {
       yourname: '',
       hername: '',
+      randomValue: '',
     };
   }
   delUser(i: number) {
@@ -78,6 +82,7 @@ export class TodoComponent {
     localStorage.setItem('loverInfo', JSON.stringify(this.loverInfo));
   }
 
-  constructor(public router: Router){}
-  
+  constructor(public router: Router) {
+    // public randomValue = Math.random((**));
+  }
 }

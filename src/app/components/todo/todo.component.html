@@ -9,7 +9,7 @@
         [(ngModel)]="newUser.yourname"
         type="text"
         class="form-control m-auto"
-        id="yourname"
+        id="yournames"
         name="yourname"
         ngModel
         required
@@ -21,7 +21,7 @@
         [(ngModel)]="newUser.hername"
         type="text"
         class="form-control m-auto"
-        id="hername"
+        id="hernames"
         name="hername"
         ngModel
         required
@@ -78,7 +78,7 @@
 </form>
 <main>
   <h2>User Info</h2>
-  <table class="border border-2 border-info w-100 text-center">
+  <table class="border border-2 border-info w-100 text-center bg-dark text-white">
     <tr class="p-3 border border-2 border-info">
       <th>#</th>
       <th>Yourname</th>
@@ -92,6 +92,7 @@
         <td>{{ i + 1 }}</td>
         <td>{{ user.yourname }}</td>
         <td>{{ user.hername }}</td>
+        <td>{{ user.randomValue }}</td>
 
         <td>
           <button (click)="editUser(i)" class="btn btn-sm btn-primary">
