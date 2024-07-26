@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
 
-  public userInfo: Array<{
+  public userInfos: Array<{
     email: string;
     firstname: string;
     lastname: string;
     password: string;
-  }> = JSON.parse(localStorage.getItem('userInfo')!) || [];
+  }> = JSON.parse(localStorage.getItem('userInfos')!) || [];
   public newUser = {
     email: '',
     firstname: '',
@@ -31,11 +31,11 @@ export class SignupComponent {
   addUsers() {
     if (this.newUser.email && this.newUser.firstname && this.newUser.lastname && this.newUser.password) {
       // Check if email already exists in userInfo array
-      const emailExists = this.userInfo.some(user => user.email === this.newUser.email);
+      const emailExists = this.userInfos.some(user => user.email === this.newUser.email);
 
       if (!emailExists) {
-        this.userInfo.push(this.newUser);
-        localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
+        this.userInfos.push(this.newUser);
+        localStorage.setItem('userInfos', JSON.stringify(this.userInfos));
         this.newUser = { email: '', firstname: '', lastname: '', password: '' };
         this.displayForm = false;
         this.router.navigate(['login']);

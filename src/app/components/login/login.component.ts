@@ -19,11 +19,11 @@ export class LoginComponent {
 
   userEmail = '';
   userPassword = '';
-userInfo = JSON.parse(localStorage.getItem('userInfo') || '[]');
-constructor(private router: Router) {} 
+userInfos = JSON.parse(localStorage.getItem('userInfos') || '[]');
+constructor(private router: Router) {}
 
 login() {
-  const User = this.userInfo.find(
+  const User = this.userInfos.find(
     (u: User) => u.email === this.userEmail && u.password === this.userPassword
   );
 
