@@ -17,26 +17,27 @@ export class TodoComponent {
   public displayForm: boolean = false;
   public ind: number = 0;
   // public randomValue: number = Math.random();
-  public min = 0;
+  public min = 1;
   public max = 100;
   public randomValue = Math.floor(Math.random()*33) * (this.max - this.min) +this. min;
   public randomInt = Math.floor(this.randomValue);
 
   public loverInfo: Array<{
+// randomInt: any;
     yourname: string;
     hername: string;
-    randomValue: string;
+    randomInt: string;
   }> = JSON.parse(localStorage.getItem('loverInfo')!) || [];
   // public grade: math.random((***)) ;
   public newUser = {
     yourname: '',
     hername: '',
-    randomValue: '',
+    randomInt: '',
   };
   public newUserEdit = {
     yourname: '',
     hername: '',
-    randomValue: '',
+    randomInt: '',
   };
   writeTodo() {
     console.log(this.loverInfo);
@@ -48,7 +49,7 @@ export class TodoComponent {
       this.newUser = {
         yourname: '',
         hername: '',
-        randomValue: '',
+        randomInt: '',
       };
     }
     this.displayForm = false;
@@ -74,7 +75,7 @@ export class TodoComponent {
     this.newUserEdit = {
       yourname: '',
       hername: '',
-      randomValue: '',
+      randomInt: '',
     };
   }
   delUser(i: number) {

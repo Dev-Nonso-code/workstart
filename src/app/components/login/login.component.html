@@ -11,19 +11,19 @@
 <body>
   <form (ngSubmit)="login" class="text-center">
     <div class="mb-3 mt-4">
-      
+
       <input type="email" class="form-control w-50 m-auto" id="email" placeholder="Email" aria-describedby="emailHelp" [(ngModel)]="userEmail" name="email" required>
       <div id="emailHelp" class="form-text text-center m-auto">We'll never share your email with anyone else.</div>
     </div>
     <div class="mb-3">
-      
+
       <input type="password" class="form-control w-50 m-auto" id="password" placeholder="password" [(ngModel)]="userPassword" name="password" required>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input m-auto" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary m-auto">Submit</button>
+    <button type="submit" (click)="login()" class="btn btn-primary m-auto">Submit</button>
   </form>
 
 
