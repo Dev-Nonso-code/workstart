@@ -17,22 +17,23 @@ export class TodoComponent {
   public displayForm: boolean = false;
   public ind: number = 0;
   // public randomValue: number = Math.random();
-  public min = 1;
-  public max = 100;
-  public randomValue = Math.floor(Math.random()*33) * (this.max - this.min) +this. min;
-  public randomInt = Math.floor(this.randomValue);
+  public min: number = 1;
+  public max: number = 99;
+  public randomValue: number = 0;
+  public randomInt: number = 0;
+  public numb: any = 0;
 
   public loverInfo: Array<{
 // randomInt: any;
     yourname: string;
     hername: string;
-    randomInt: string;
+    randomInt: any;
   }> = JSON.parse(localStorage.getItem('loverInfo')!) || [];
   // public grade: math.random((***)) ;
   public newUser = {
     yourname: '',
     hername: '',
-    randomInt: '',
+    randomInt:this.numb,
   };
   public newUserEdit = {
     yourname: '',
@@ -43,17 +44,21 @@ export class TodoComponent {
     console.log(this.loverInfo);
   }
   addusers() {
-    if (this.newUser.yourname && this.newUser.hername) {
+   this.randomValue = Math.floor(Math.random()* 39) * (this.max - this.min) + this.min;
+   this.randomInt = Math.floor(this.randomValue);
+   this.numb = JSON.stringify(this.randomInt)
+
+    if (this.newUser.yourname && this.newUser.hername && this.numb != 0) {
       this.loverInfo.push(this.newUser);
       localStorage.setItem('loverInfo', JSON.stringify(this.loverInfo));
       this.newUser = {
         yourname: '',
         hername: '',
-        randomInt: '',
+        randomInt: this.numb,
       };
     }
     this.displayForm = false;
-    console.log(this.loverInfo);
+    console.log(this.newUser);
 
     this.router.navigate(['/todo']);
   }
@@ -68,6 +73,9 @@ export class TodoComponent {
     this.newUserEdit = this.loverInfo[i];
   }
   editUserInfo() {
+    this.randomValue = Math.floor(Math.random()* 6) * (this.max - this.min) +this.min;
+   this.randomInt = Math.floor(this.randomValue);
+   this.numb = JSON.stringify(this.randomInt)
     this.loverInfo[this.ind] = this.newUserEdit;
     console.log(this.loverInfo);
     this.displayForm = true;
